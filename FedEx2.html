@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="FedEx1.css">
+
+<!-- //move to css later// -->
+<style>
+.button {
+    background-color: rgb(60, 0, 121);/*//purple*/
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+    box-shadow:0 9px rgb(157, 159, 162); /*grey*/
+}
+
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '>>';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  bottom:-20px;
+
+}
+
+.button:hover span {
+  padding-right: 25px;
+ 
+
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+
+}
+.button:hover{
+
+	background-color: rgb(54, 23, 48);/*dark purple*/
+}
+
+.button:active {
+  background-color: rgb(157, 159, 162); /*grey*/
+  box-shadow: 0 5px rgb(157, 159, 162);
+  transform: translateY(7px);
+}
+
+.logButton {
+    background-color: rgb(60, 0, 121);/*//purple*/
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    cursor: pointer;
+    transition: all 0.5s;
+    
+}
+
+.logButton:hover{
+
+	background-color: rgb(54, 23, 48);/*dark purple*/
+}
+
+.logButton:active {
+  background-color: rgb(157, 159, 162); /*grey*/
+  box-shadow: 0 5px rgb(157, 159, 162);
+  transform: translateY(7px);
+}
+
+#console{
+
+ 	background-color: rgb(0, 0, 0);/*//purple*/
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 10px;
+    cursor: pointer;
+    float: center;
+    box-shadow:0 9px rgb(60, 0, 121); /*grey*/
+}
+
+
+
+
+.button2{
+
+	
+	
+
+	display:inline-block;
+	width:100px;
+	height:100px;
+	border-radius:50px;/*must be half height or width*/
+	font-size:16px;
+	color:#fff;
+	line-height:100px;
+	text-shadow:0 1px 0 #666;
+	text-align:center;
+	text-decoration:none;
+	box-shadow:9px 9px 12px #000;
+	background:#3C0079; /* purple*/
+}
+
+.button2:hover{
+	color:#eee;
+	text-shadow:0 0 1px #666;
+	text-decoration:none;
+	box-shadow:0 0 4px #222 inset;
+	opacity:1;
+	background:#9D9FA2;/* grey*/
+}
+
+.button2:active {
+  background-color: rgb(157, 159, 162); /*grey*/
+  box-shadow: 0 5px rgb(157, 159, 162);
+  transform: translateY(4px);
+}
+
+.profilePic{
+	border-radius: 25%;
+	float:left;
+}
+
+
+div.scroll{
+	overflow: auto;
+	width: 80%;
+	height: 200px;
+}
+.logo{
+
+	float:left;
+	left:10;
+	bottom: 0;
+	top:0;
+	z-index: 1;
+	margin: 10px;
+
+}
+</style>
+<!-- //---move stuff about line to css---// -->
+
+<div id="siteTime">
+<button class="logOutButton" type="button" >Log Out</button>
+
+<button class="rightButton" type="button" >Print Log</button>
+
+<center><clock>   <span id="date_time"></span> </clock>
+
+<script type="text/javascript" >window.onload = date_time('date_time');
+
+
+function date_time(id)
+{
+        date = new Date;
+        year = date.getFullYear();
+        month = date.getMonth();
+        months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+        d = date.getDate();
+        day = date.getDay();
+        days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+        h = date.getHours();
+        if(h<10)
+        {
+                h = "0"+h;
+        }
+        m = date.getMinutes();
+        if(m<10)
+        {
+                m = "0"+m;
+        }
+        s = date.getSeconds();
+        if(s<10)
+        {
+                s = "0"+s;
+        }
+        result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m+':'+s;
+        parsedResult = ''+h+':'+m+':'+s;
+        document.getElementById(id).innerHTML = result;
+        setTimeout('date_time("'+id+'");','1000');
+        return parsedResult;
+       
+}
+
+
+</script>
+</center>
+</div>
+
+
+
+
+
+<br>
+
+<img = src ="protype.png" width="200" height="284" class="profilePic">
+
+
+<center>
+
+
+<div id="console">
+
+Enter Task Code Number: 
+<input type="number" id="CodeNumber" value="" size="4" min="0000" max="9999" max="4">
+
+
+
+
+Enter Task Name: 
+<input type="text" id="TaskName" value="" size="35"><br>
+
+
+
+<br>
+<button class="button" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult)">Add Task</button>
+<br>
+</div>
+<br>
+<br>
+
+
+<SCRIPT language="javascript">
+        function addRow(tableID,dateID) {
+
+
+        	
+        	
+        	var code = document.getElementById("CodeNumber").value;
+        	var task = document.getElementById("TaskName").value;
+ 
+            var table = document.getElementById(tableID);
+ 
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+ 
+            var colCount = table.rows[0].cells.length;
+ 
+            for(var i=0; i<colCount; i++) {
+ 
+                var newcell = row.insertCell(i);
+ 
+                newcell.innerHTML = table.rows[1].cells[i].innerHTML;
+                //alert(newcell.childNodes);
+                switch(i) {
+                    case 0:
+                            newcell.innerHTML =  code;
+                            break;
+                    case 1:
+                            newcell.innerHTML = task;
+                            break;
+                    case 2:
+                    		newcell.innerHTML = dateID;
+                    		
+                    		break;
+                    case 3:
+                    		
+                    		if (rowCount == 2){// change from hardcoded
+                    			break;
+                    		}
+                    		
+                    			var prevRow = rowCount-1;
+
+                    		
+
+                    		var change = table.rows[prevRow].cells;
+                    		change[3].innerHTML = dateID;
+                    		break;
+                    
+                    
+                }
+            }
+        }
+ 
+        
+        
+ 
+    </SCRIPT>
+	
+
+
+
+
+<br>
+
+<div class="scroll">
+
+<TABLE id="dataTable" width="80%" border="1">
+<TR>
+        <TH>Task Code</TH>
+        <TH>Task Name</TH>
+        <TH>Start Time</TH>
+        <TH>End Time</TH>
+        <TH>Comment</TH>
+        <TH>Select to Edit</TH>
+        </TR>
+<tbody>
+    <tr>    
+            
+            
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD><INPUT type="text" /></TD>
+            <TD><center><button class="logButton" type="button">Edit</button></center></TD>
+            
+        </TR>
+        </tbody>
+    </TABLE>
+
+
+
+</div>
+	
+
+
+<br>
+<img = src ="FedEx.png" width="174" height="50" class="logo">
+
+<center>
+
+<button class="button2" type="button">End Work</button>
+
+</center>
+
+
+
+
+
+
+
+
+
+<body style="background-color:white;">
+
+
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+.inset{
+
+	position: relative;
+	margin-top: 10%;/*change from hardcoded*/
+	left: 45%;/* change from hardcoded*/
+
+	display:block;
+	width:200px;
+	height:200px;
+	border-radius:100px;/*must be half height or width*/
+	font-size:40px;
+	color:#fff;
+	line-height:200px;
+	text-shadow:0 1px 0 #666;
+	text-align:center;
+	text-decoration:none;
+	box-shadow:1px 1px 2px #000;
+	background:#3C0079; /* purple*/
+	}
+
+.inset:hover{
+	color:#eee;
+	text-shadow:0 0 1px #666;
+	text-decoration:none;
+	box-shadow:0 0 4px #222 inset;
+	opacity:1;
+	background:#9D9FA2;/* grey*/
+}
+
+clock{
+	text-align: center;
+	margin: auto;
+	font-family: Arial;
+	font-size: 30px;
+
+
+}
+
+
+.right{
+
+	position: absolute;
+	right: 40px;
+	width: 900px;
+	height: 700px;
+	background-color: #b0e0e6;
+}
+
+
+
+center{
+	align-content: center;
+	
+}
+
+
+///
+/*li {
+    list-style: none;
+}
+li:before {
+    content: "✓ ";
+}*/
+
+input {
+    border: 3px;
+    width: 80px;
+    font-size: 14px;
+    padding: 2px;
+}
+
+input:hover {
+    background-color: #eee;
+}
+
+input:focus {
+    background-color: #ccf;
+}
+
+input:not(:focus) {
+    text-align: right;
+}
+
+table {
+    border-collapse: collapse;  
+}
+
+td {
+    border: 1px solid #999;
+    padding: 10;
+    text-align: center;
+    background-color: #ccc;
+}
+
+tr:first-child td, td:first-child {
+    
+    padding: 1px 3px;
+    font-weight: bold;
+    text-align: center;
+}
+
+footer {
+    font-size: 80%;
+}
+
+///
+
+.button { /*not this one*/
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#siteTime{
+
+	background-color:rgb(60, 0, 121);
+    color:white;
+    text-align:center;
+    padding:10px;
+
+    position: relative;
+
+}
+
+.logOutButton{
+	position: absolute;
+	left:0;
+	bottom: 0;
+	top:0;
+	z-index: 1;
+
+	 background-color: rgb(60, 0, 121);/*//purple*/
+    border: none;
+    
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+    cursor: pointer;
+    transition: all 0.5s;
+    
+
+
+}
+
+.logOutButton:hover{
+
+	background-color: rgb(54, 23, 48);/*dark purple*/
+}
+
+.logOutButton:active {
+  background-color: rgb(157, 159, 162); /*grey*/
+  box-shadow: 0 5px rgb(157, 159, 162);
+  transform: translateY(4px);
+}
+
+.rightButton{
+
+	position: absolute;
+	right:0;
+	bottom: 0; 
+	top:0;
+	 background-color: rgb(60, 0, 121);/*//purple*/
+    border: none;
+    
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.rightButton:hover{
+
+	background-color: rgb(54, 23, 48);/*dark purple*/
+}
+
+.rightButton:active {
+  background-color: rgb(157, 159, 162); /*grey*/
+  box-shadow: 0 5px rgb(157, 159, 162);
+  transform: translateY(4px);
+}
+
+//
