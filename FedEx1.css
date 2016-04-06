@@ -350,3 +350,12 @@ div.scroll{
   box-shadow: 0 5px rgb(157, 159, 162);
   transform: translateY(7px);
 }
+
+/*border around favorites*/
+#favoriteBorder{
+    border:3px solid black;
+     display: inline-block;
+     padding: 15px 32px;
+
+
+}
