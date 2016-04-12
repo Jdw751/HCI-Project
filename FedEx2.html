@@ -6,6 +6,8 @@
 </head>
 
 <link rel="stylesheet" type="text/css" href="FedEx1.css"/>
+<!-- jquery insert -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 
 
 <!-- //move to css later// -->
@@ -17,7 +19,7 @@
 <div id="siteTime">
 <button class="logOutButton" type="button" >Print Log</button>
 
-<button class="rightButton" type="button" >Log Out</button>
+<button class="rightButton" type="button" onclick="logOutAlert()" >Log Out</button>
 
 <center><clock>   <span id="date_time"></span> </clock>
 
@@ -91,17 +93,17 @@ Enter Task Name:
 
 
 <br>
-<button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult)">Add Task</button>
+<button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,document.getElementById('CodeNumber').value,  document.getElementById('TaskName').value)">Add Task</button>
 <br>
 </div>
 <br>
 <br>
 <div id="favoriteBorder"> <!-- create dynamically with top 5 favorites of  user -->
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult)">Add Task</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult)">Add Task</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult)">Add Task</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult)">Add Task</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult)">Add Task</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'12 ', 'Begin Break')">Begin Break</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult, '61', 'Doc Sort Hand')">Doc Sort Hand</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'43', 'Sort Delay')">Sort Delay</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'53','Fine Sort')">Fine Sort</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'14','End Break')">End Break</button>
 </div>
 
 
@@ -109,13 +111,14 @@ Enter Task Name:
 
 
 <SCRIPT language="javascript">
-        function addRow(tableID,dateID) {
+       
+        function addRow(tableID,dateID,codeID,taskID) {
 
 
-        	
-        	
-        	var code = document.getElementById("CodeNumber").value;
-        	var task = document.getElementById("TaskName").value;
+        	var code = codeID;
+        	//var code = document.getElementById("CodeNumber").value;
+        	//var task = document.getElementById("TaskName").value;
+            var task = taskID
  
             var table = document.getElementById(tableID);
  
@@ -173,7 +176,7 @@ Enter Task Name:
 
 <div class="scroll">
 
-<TABLE id="dataTable" width="80%" border="1">
+<TABLE id="dataTable" width="80%" border="1" class="eidtableTable">
 <TR>
         <TH>Task Code</TH>
         <TH>Task Name</TH>
@@ -208,9 +211,11 @@ Enter Task Name:
 
 <center>
 
-<button class="button2" type="button">End Work</button>
+<button class="button2" type="button" onclick="endWorkAlert()">End Work</button>
 
 </center>
+
+<!-- slide in panel -->
 
 
 <!-- autocomplete -->
@@ -681,8 +686,84 @@ Awesomplete.$('.dropdown-btn').addEventListener("click", function() {
 
 </script>
 
+<script type="text/javascript">
+  // edit table
+
+  $(function() {
+
+  $("#table")
+    .tablesorter({
+      theme : 'blue',
+
+      widgets: ['editable'],
+      widgetOptions: {
+        editable_columns       : [0,1,2],       // or "0-2" (v2.14.2); point to the columns to make editable (zero-based index)
+        editable_enterToAccept : true,          // press enter to accept content, or click outside if false
+        editable_autoAccept    : true,          // accepts any changes made to the table cell automatically (v2.17.6)
+        editable_autoResort    : false,         // auto resort after the content has changed.
+        editable_validate      : null,          // return a valid string: function(text, original, columnIndex){ return text; }
+        editable_focused       : function(txt, columnIndex, $element) {
+          // $element is the div, not the td
+          // to get the td, use $element.closest('td')
+          $element.addClass('focused');
+        },
+        editable_blur          : function(txt, columnIndex, $element) {
+          // $element is the div, not the td
+          // to get the td, use $element.closest('td')
+          $element.removeClass('focused');
+        },
+        editable_selectAll     : function(txt, columnIndex, $element){
+          // note $element is the div inside of the table cell, so use $element.closest('td') to get the cell
+          // only select everthing within the element when the content starts with the letter "B"
+          return /^b/i.test(txt) && columnIndex === 0;
+        },
+        editable_wrapContent   : '<div>',       // wrap all editable cell content... makes this widget work in IE, and with autocomplete
+        editable_trimContent   : true,          // trim content ( removes outer tabs & carriage returns )
+        editable_noEdit        : 'no-edit',     // class name of cell that is not editable
+        editable_editComplete  : 'editComplete' // event fired after the table content has been edited
+      }
+    })
+    // config event variable new in v2.17.6
+    .children('tbody').on('editComplete', 'td', function(event, config){
+      var $this = $(this),
+        newContent = $this.text(),
+        cellIndex = this.cellIndex, // there shouldn't be any colspans in the tbody
+        rowIndex = $this.closest('tr').attr('id'); // data-row-index stored in row id
+
+      // Do whatever you want here to indicate
+      // that the content was updated
+      $this.addClass( 'editable_updated' ); // green background + white text
+      setTimeout(function(){
+        $this.removeClass( 'editable_updated' );
+      }, 500);
+
+      /*
+      $.post("mysite.php", {
+        "row"     : rowIndex,
+        "cell"    : cellIndex,
+        "content" : newContent
+      });
+      */
+    });
+
+});  
 
 
+
+
+</script>
+
+<!-- alerts -->
+<script type="text/javascript">
+    function endWorkAlert() {
+    alert("You are about the end your work day, are you sure?");
+}
+
+    function logOutAlert() {
+    alert("Are you sure you want to Log Out?");
+}
+
+</script>
 
 <body style="background-color:white;">
 
