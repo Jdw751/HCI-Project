@@ -15,6 +15,7 @@
 	text-decoration:none;
 	box-shadow:1px 1px 2px #000;
 	background:#3C0079; /* purple*/
+    font-family: Arial;
 	}
 
 .inset:hover{
@@ -53,6 +54,7 @@ input {
     width: 80px;
     font-size: 14px;
     padding: 2px;
+    font-family: Arial;
 }
 
 input:hover {
@@ -83,10 +85,12 @@ tr:first-child td, td:first-child {
     padding: 1px 3px;
     font-weight: bold;
     text-align: center;
+    font-family: Arial;
 }
 
 footer {
     font-size: 80%;
+    font-family: Arial;
 }
 
 ///
@@ -102,6 +106,7 @@ footer {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    font-family: Arial;
 }
 
 #siteTime{
@@ -128,6 +133,7 @@ footer {
     font-size: 16px;
     cursor: pointer;
     transition: all 0.5s;
+    font-family: Arial;
 }
 
 .logOutButton:hover{
@@ -157,6 +163,7 @@ footer {
     font-size: 16px;
     cursor: pointer;
     transition: all 0.5s;
+    font-family: Arial;
 }
 
 .rightButton:hover{
@@ -186,6 +193,7 @@ footer {
     cursor: pointer;
     transition: all 0.5s;
     box-shadow:0 9px rgb(157, 159, 162); /*grey*/
+    font-family: Arial;
 }
 
 
@@ -226,6 +234,7 @@ footer {
     margin: 1px 1px;
     cursor: pointer;
     transition: all 0.5s;
+    font-family: Arial;
     
 }
 
@@ -255,6 +264,7 @@ footer {
     cursor: pointer;
     float: center;
     box-shadow:0 9px rgb(60, 0, 121); /*grey*/
+    font-family: Arial;
 }
 
 
@@ -271,6 +281,7 @@ footer {
     text-decoration:none;
     box-shadow:9px 9px 12px #000;
     background:#3C0079; /* purple*/
+    font-family: Arial;
 }
 
 .button2:hover{
@@ -324,6 +335,7 @@ div.scroll{
     cursor: pointer;
     transition: all 0.5s;
     box-shadow:0 9px rgb(157, 159, 162); /*grey*/
+    font-family: Arial;
 }
 
 
@@ -479,7 +491,7 @@ td.editable_updated {
 
 /*edit table*/
 { 
-    font-family:Consolas 
+    font-family:Arial;
     } 
     .editableTable { 
         border:solid 1px;
