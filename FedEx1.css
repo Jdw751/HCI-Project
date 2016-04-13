@@ -181,7 +181,7 @@ footer {
 
 .button {
     background-color: rgb(60, 0, 121);/*//purple*/
-    border: none;
+    border: 5px solid rgb(255, 0, 0);
     border-radius: 15px;
     color: white;
     padding: 15px 32px;
@@ -362,6 +362,50 @@ div.scroll{
   box-shadow: 0 5px rgb(157, 159, 162);
   transform: translateY(7px);
 }
+
+/*add task button*/
+.button4 {
+    background-color: rgb(60, 0, 121);/*//purple*/
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+    box-shadow:0 9px rgb(157, 159, 162); /*grey*/
+    font-family: Arial;
+}
+
+
+.button4 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+
+.button4:hover span:after {
+  opacity: 1;
+  right: 0;
+
+}
+.button4:hover{
+
+    background-color: rgb(54, 23, 48);/*dark purple*/
+}
+
+.button4:active {
+  background-color: rgb(157, 159, 162); /*grey*/
+  box-shadow: 0 5px rgb(157, 159, 162);
+  transform: translateY(7px);
+}
+/**/
 
 /*border around favorites*/
 #favoriteBorder{
