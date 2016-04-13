@@ -78,6 +78,7 @@ td {
     padding: 10;
     text-align: center;
     background-color: #ccc;
+    font-family:Arial;
 }
 
 tr:first-child td, td:first-child {
@@ -91,6 +92,10 @@ tr:first-child td, td:first-child {
 footer {
     font-size: 80%;
     font-family: Arial;
+}
+
+th {
+    font-family:Arial;
 }
 
 ///
@@ -249,7 +254,7 @@ footer {
   transform: translateY(7px);
 }
 
-#console{
+.console{
 
     background-color: rgb(0, 0, 0);/*//purple*/
     border: none;
@@ -301,7 +306,9 @@ footer {
 
 .profilePic{
     border-radius: 25%;
-    float:left;
+    /*float:left;*/
+    max-width: 50%;
+    height: auto;
 }
 
 
@@ -408,11 +415,11 @@ div.scroll{
 /**/
 
 /*border around favorites*/
-#favoriteBorder{
+.favoriteBorder{
     border:3px solid black;
      display: inline-block;
      padding: 15px 32px;
-
+     
 
 }
 /*awesomcomplete*/
@@ -516,6 +523,30 @@ div.awesomplete > ul:empty {
         }
 
 
+/*dynamicaly size images*/   
+
+.responsive {
+    
+    float: left;
+    /*width: 25%;*/
+     max-width: 50%;
+    height: auto;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 50%;
+        
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 50%;
+    }
+}
+
+
         /*table sort*/
 .tablesorter tbody > tr > td[contenteditable=true]:focus {
   outline: #08f 1px solid;
@@ -539,10 +570,14 @@ td.editable_updated {
     } 
     .editableTable { 
         border:solid 1px;
-         width:100% } 
+         width:100%;
+         font-family:Arial;
+     } 
+
 
     .editableTable td { 
         border:solid 1px; 
+        font-family:Arial;
         } 
 
         .editableTable .cellEditing {
