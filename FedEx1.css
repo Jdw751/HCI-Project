@@ -1,3 +1,14 @@
+.center{
+
+    position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+
+
 .inset{
 
 	position: relative;
@@ -270,6 +281,11 @@ th {
     float: center;
     box-shadow:0 9px rgb(60, 0, 121); /*grey*/
     font-family: Arial;
+
+    position: relative;
+  
+    left:5%;
+  
 }
 
 
@@ -419,10 +435,13 @@ div.scroll{
     border:3px solid black;
      display: inline-block;
      padding: 15px 32px;
+      border-radius: 15px;
      
 
 }
-/*awesomcomplete*/
+/*awesomcomplete
+https://leaverou.github.io/awesomplete/
+*/
 
 [hidden] { display: none; }
 

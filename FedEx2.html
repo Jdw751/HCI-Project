@@ -72,33 +72,33 @@ function editTask(){
 <img = src ="protype.png" width="200" height="284" class="profilePic">
 
 </div>
-<!-- <center> -->
-
+<!-- <center>
+ -->
 
 <div class="console">
 
 
-Enter Task Code Number: 
-<font color="black" ><input  type="number" name="taskID[]" id="CodeNumber" class="dropdown-input" value="" size="4" min="0000" max="9999" max="4" data-list="4,6,7,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,60,61,62,65,66,67,69,93,105,106,107,108,110,120"/></font>
-Enter Task Name: 
-<font color="black"><input type="text" name="taskName"id="TaskName" class="awesomplete" value="" size="35"data-list="Shuttle Double Trailer,Longhaul activity,Freight Sales Assistant,Begin On-Road Act,Local Sick,Travel Time,Begin Break,End Break,Ramp Delay,XXXX,End On-Road,XXXX,Bulk Pickup,DG Agent,Route Change,Shuttle,Fueling,Vehicle Out of Svc,Change Vehicle,Vehicle Return Svc,XXXX,XXXX,XXXX,Package Handling,Ramp Activity,Caretaker/Clerical,Office/Cust Svc,Dispatch,Training,Begin Check Ride,XXXX,Miscellaneous,Pre/Post Check,Change Location,Change manager,Sort Delay,XXXX,XXXX,Import/Export Doc,XXXX,Meeting,XXXX,Front Counter,XXXX,Ramp Agent,Fine Sort,Double Trailer Pre/Post,XXXX,Courier Clerical,End Check Ride,Doc Sort Hand,Non-Con,Que/Trace,Longhaul/Double Trailer,Freight Handling,Charter Flight Processing,Exception Pkg Research,Upload Aircraft,Download Aircraft,Sort ULD movement,Ramp ULD movement,Ops Lead Agent,TRW"/></font>
-
-<br>
+Enter Task Code Number or Name: 
+<font color="black" ><input  type="text" name="taskID[]" id="Task" class="awesomplete" value="" size="50"  data-list="4: Shuttle Double Trailer,6:  Longhaul activity,7:  Freight Sales Assistant, 10:  Begin On-Road Act,11:  Local Sick,12: Travel Time,13: Begin Break,14:  End Break,15:  Ramp Delay,16:  XXXX,17:  End On-Road,18:  XXXX,19:  Bulk Pickup,20:  DG Agent,21:  Route Change,22:  Shuttle,23:  Fueling,24:  Vehicle Out of Svc,25:  Change Vehicle,26:  Vehicle Return Svc,27:  XXXX,28:  XXXX,29:  XXXX,30:  Package Handling,31:  Ramp Activity,32:  Caretaker/Clerical,33:  ,34:  Office/Cust Svc,35:  Dispatch,36:  Training,37:  Begin Check Ride,38:  XXXX,39:  Miscellaneous,40:  Pre/Post Check,41:  Change Location,42:  Change manager,43:  Sort Delay,44:  XXXX,45:  XXXX,46:  Import/Export Doc,47:  XXXX,48:  Meeting,49:  XXXX,50:  Front Counter,51:  XXXX,52:  Ramp Agent,53:  Fine Sort,54:  Double Trailer Pre/Post,55:  XXXX,56:  Courier Clerical,60:  End Check Ride,61:  Doc Sort Hand,62:  Non-Con,65:  Que/Trace,66:  Longhaul/Double Trailer,67:  Freight Handling,69:  Charter Flight Processing,93 : Exception Pkg Research,105 : Upload Aircraft,106 : Download Aircraft,107 : Sort ULD movement,108:  Ramp ULD movement,110 : Ops Lead Agent,120:  TRW,"/></font>
 
 
 <br>
-<button class="button4" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,document.getElementById('CodeNumber').value,  document.getElementById('TaskName').value)">Add Task</button>
+
+
+<br>
+<button class="button4" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,document.getElementById('Task').value)">Add Task</button>
 <br>
 </div>
+<!-- </center> -->
 <br>
 <br>
 <center>
 <div class="favoriteBorder"> <!-- create dynamically with top 5 favorites of  user -->
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'12 ', 'Begin Break')">Begin Break</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult, '61', 'Doc Sort Hand')">Doc Sort Hand</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'43', 'Sort Delay')">Sort Delay</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'53','Fine Sort')">Fine Sort</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'14','End Break')">End Break</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'12: Begin Break')">Begin Break</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult, '61: Doc Sort Hand')">Doc Sort Hand</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'43: Sort Delay')">Sort Delay</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'53: Fine Sort')">Fine Sort</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'14: End Break')">End Break</button>
 </div>
 
 
@@ -107,13 +107,15 @@ Enter Task Name:
 
 <SCRIPT language="javascript">
        
-        function addRow(tableID,dateID,codeID,taskID) {
+        function addRow(tableID,dateID,taskID) {
 
+            var str = taskID.toString();
+            var toBeParsed = str.split(":");
 
-        	var code = codeID;
+        	var code = toBeParsed[0];
         	//var code = document.getElementById("CodeNumber").value;
         	//var task = document.getElementById("TaskName").value;
-            var task = taskID
+            var task = toBeParsed[1];
  
             var table = document.getElementById(tableID);
  
