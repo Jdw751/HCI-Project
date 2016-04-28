@@ -293,7 +293,7 @@ th {
     display:inline-block;
     width:100px;
     height:100px;
-    border-radius:50px;/*must be half height or width*/
+    border-radius:25px;/*must be half height or width*/
     font-size:16px;
     color:#fff;
     line-height:100px;
@@ -335,7 +335,7 @@ div.scroll{
 }
 .logo{
 
-    float:left;
+    float:center;
     left:10;
     bottom: 0;
     top:0;
@@ -432,9 +432,10 @@ div.scroll{
 
 /*border around favorites*/
 .favoriteBorder{
+    float: left;
     border:3px solid black;
      display: inline-block;
-     padding: 15px 32px;
+     padding: 10px 10px;
       border-radius: 15px;
      
 
