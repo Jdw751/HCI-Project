@@ -1,11 +1,11 @@
-.center{
+/*.center{
 
-    position: fixed;
+    position: relative;
   top: 50%;
   left: 50%;
   margin-top: -50px;
-  margin-left: -100px;
-}
+  margin-left: -50px;
+}*/
 
 
 
@@ -267,33 +267,33 @@ th {
 
 .console{
 
-    background-color: rgb(0, 0, 0);/*//purple*/
+    background-color: rgb(0, 0, 0);/*//black*/
     border: none;
     border-radius: 15px;
     color: white;
     padding: 15px 32px;
-    text-align: center;
+   /* text-align: center;*/
     text-decoration: none;
     display: inline-block;
     font-size: 25px;
     margin: 4px 10px;
-    cursor: pointer;
-    float: center;
+   /* cursor: pointer;*/
+    /*float: center;*/
     box-shadow:0 9px rgb(60, 0, 121); /*grey*/
     font-family: Arial;
 
     position: relative;
   
-    left:5%;
+    right:5%;
   
 }
 
 
-.button2{
+.endWork{
     display:inline-block;
     width:100px;
     height:100px;
-    border-radius:50px;/*must be half height or width*/
+    border-radius:25px;/*must be half height or width*/
     font-size:16px;
     color:#fff;
     line-height:100px;
@@ -303,9 +303,11 @@ th {
     box-shadow:9px 9px 12px #000;
     background:#3C0079; /* purple*/
     font-family: Arial;
+
+    float:right;
 }
 
-.button2:hover{
+.endWork:hover{
     color:#eee;
     text-shadow:0 0 1px #666;
     text-decoration:none;
@@ -314,7 +316,7 @@ th {
     background:#9D9FA2;/* grey*/
 }
 
-.button2:active {
+.endWork:active {
   background-color: rgb(157, 159, 162); /*grey*/
   box-shadow: 0 5px rgb(157, 159, 162);
   transform: translateY(4px);
@@ -332,10 +334,11 @@ div.scroll{
     overflow: auto;
     width: 80%;
     height: 200px;
+    
 }
 .logo{
 
-    float:left;
+    float:center;
     left:10;
     bottom: 0;
     top:0;
@@ -432,9 +435,10 @@ div.scroll{
 
 /*border around favorites*/
 .favoriteBorder{
+    float: left;
     border:3px solid black;
      display: inline-block;
-     padding: 15px 32px;
+     padding: 10px 10px;
       border-radius: 15px;
      
 

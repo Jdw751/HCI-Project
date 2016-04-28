@@ -30,10 +30,21 @@ function date_time(id)
         day = date.getDay();
         days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
         h = date.getHours();
+        if (h>12){
+            h = h - 12;
+            meridiem = "pm"
+                    
+                }
+        else{
+            meridiem = "am"
+        }
         if(h<10)
         {
-                h = "0"+h;
+                h = "  "+h;
+
+                // add in am and pm*****************
         }
+
         m = date.getMinutes();
         if(m<10)
         {
@@ -44,7 +55,7 @@ function date_time(id)
         {
                 s = "0"+s;
         }
-        result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m;
+        result = ''+days[day]+' '+months[month]+' '+d+', ' +year+'   '+h+':'+m +''+ meridiem;
         parsedResult = ''+h+':'+m;
         document.getElementById(id).innerHTML = result;
         setTimeout('date_time("'+id+'");','1000');
@@ -71,34 +82,52 @@ function editTask(){
 <div class="responsive">
 <img = src ="protype.png" width="200" height="284" class="profilePic">
 
+
+
+
+
+
 </div>
-<!-- <center>
- -->
+<center>
+
 
 <div class="console">
 
 
 Enter Task Code Number or Name: 
-<font color="black" ><input  type="text" name="taskID[]" id="Task" class="awesomplete" value="" size="50"  data-list="4: Shuttle Double Trailer,6:  Longhaul activity,7:  Freight Sales Assistant, 10:  Begin On-Road Act,11:  Local Sick,12: Travel Time,13: Begin Break,14:  End Break,15:  Ramp Delay,16:  XXXX,17:  End On-Road,18:  XXXX,19:  Bulk Pickup,20:  DG Agent,21:  Route Change,22:  Shuttle,23:  Fueling,24:  Vehicle Out of Svc,25:  Change Vehicle,26:  Vehicle Return Svc,27:  XXXX,28:  XXXX,29:  XXXX,30:  Package Handling,31:  Ramp Activity,32:  Caretaker/Clerical,33:  ,34:  Office/Cust Svc,35:  Dispatch,36:  Training,37:  Begin Check Ride,38:  XXXX,39:  Miscellaneous,40:  Pre/Post Check,41:  Change Location,42:  Change manager,43:  Sort Delay,44:  XXXX,45:  XXXX,46:  Import/Export Doc,47:  XXXX,48:  Meeting,49:  XXXX,50:  Front Counter,51:  XXXX,52:  Ramp Agent,53:  Fine Sort,54:  Double Trailer Pre/Post,55:  XXXX,56:  Courier Clerical,60:  End Check Ride,61:  Doc Sort Hand,62:  Non-Con,65:  Que/Trace,66:  Longhaul/Double Trailer,67:  Freight Handling,69:  Charter Flight Processing,93 : Exception Pkg Research,105 : Upload Aircraft,106 : Download Aircraft,107 : Sort ULD movement,108:  Ramp ULD movement,110 : Ops Lead Agent,120:  TRW,"/></font>
+<font color="black" ><input  type="text" name="taskID[]" id="Task" class="awesomplete" value="" size="35"  data-list="4: Shuttle Double Trailer,6:  Longhaul activity,7:  Freight Sales Assistant, 10:  Begin On-Road Act,11:  Local Sick,12: Travel Time,13: Begin Break,14:  End Break,15:  Ramp Delay,16:  XXXX,17:  End On-Road,18:  XXXX,19:  Bulk Pickup,20:  DG Agent,21:  Route Change,22:  Shuttle,23:  Fueling,24:  Vehicle Out of Svc,25:  Change Vehicle,26:  Vehicle Return Svc,27:  XXXX,28:  XXXX,29:  XXXX,30:  Package Handling,31:  Ramp Activity,32:  Caretaker/Clerical,33:  ,34:  Office/Cust Svc,35:  Dispatch,36:  Training,37:  Begin Check Ride,38:  XXXX,39:  Miscellaneous,40:  Pre/Post Check,41:  Change Location,42:  Change manager,43:  Sort Delay,44:  XXXX,45:  XXXX,46:  Import/Export Doc,47:  XXXX,48:  Meeting,49:  XXXX,50:  Front Counter,51:  XXXX,52:  Ramp Agent,53:  Fine Sort,54:  Double Trailer Pre/Post,55:  XXXX,56:  Courier Clerical,60:  End Check Ride,61:  Doc Sort Hand,62:  Non-Con,65:  Que/Trace,66:  Longhaul/Double Trailer,67:  Freight Handling,69:  Charter Flight Processing,93 : Exception Pkg Research,105 : Upload Aircraft,106 : Download Aircraft,107 : Sort ULD movement,108:  Ramp ULD movement,110 : Ops Lead Agent,120:  TRW,"/></font>
 
 
 <br>
+
+
 
 
 <br>
 <button class="button4" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,document.getElementById('Task').value)">Add Task</button>
 <br>
 </div>
+
+<button class="endWork" type="button" onclick="endWorkAlert()">End Work</button>
+
 <!-- </center> -->
 <br>
 <br>
-<center>
+<!-- <center> -->
 <div class="favoriteBorder"> <!-- create dynamically with top 5 favorites of  user -->
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'12: Begin Break')">Begin Break</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult, '61: Doc Sort Hand')">Doc Sort Hand</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'43: Sort Delay')">Sort Delay</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'53: Fine Sort')">Fine Sort</button>
-    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'14: End Break')">End Break</button>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'12: Begin Break')">12: Begin Break</button>
+    <br>
+    <br>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult, '61: Doc Sort Hand')">61: Doc Sort Hand</button>
+    <br>
+    <br>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'43: Sort Delay')">43: Sort Delay</button>
+    <br>
+    <br>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'53: Fine Sort')">53: Fine Sort</button>
+    <br>
+    <br>
+    <button class="button3" type="button" style ="vertical-align:middle" onclick="addRow('dataTable',parsedResult,'14: End Break')">14: End Break</button>
 </div>
 
 
@@ -166,14 +195,11 @@ Enter Task Code Number or Name:
     </SCRIPT>
 	
 
-
-
-
 <br>
 
 <div class="scroll">
 
-<TABLE id="dataTable" width="80%" border="1" class="eidtableTable">
+<TABLE id="dataTable" width="80%" border="1" class="editableTable">
 <TR>
         <TH>Task Code</TH>
         <TH>Task Name</TH>
@@ -204,13 +230,10 @@ Enter Task Code Number or Name:
 
 
 <br>
-<img = src ="FedEx.png" width="174" height="50" class="logo">
-
 <center>
-
-<button class="button2" type="button" onclick="endWorkAlert()">End Work</button>
-
+<img = src ="FedEx.png" width="174" height="50" class="logo">
 </center>
+
 
 <!-- slide in panel -->
 
@@ -242,7 +265,7 @@ var _ = function (input, o) {
     o = o || {};
 
     configure(this, {
-        minChars: 2,
+        minChars: 1,
         maxItems: 10,
         autoFirst: false,
         data: _.DATA,
@@ -694,7 +717,7 @@ Awesomplete.$('.dropdown-btn').addEventListener("click", function() {
 
       widgets: ['editable'],
       widgetOptions: {
-        editable_columns       : [0,1,2],       // or "0-2" (v2.14.2); point to the columns to make editable (zero-based index)
+        editable_columns       : [0],       // or "0-2" (v2.14.2); point to the columns to make editable (zero-based index)
         editable_enterToAccept : true,          // press enter to accept content, or click outside if false
         editable_autoAccept    : true,          // accepts any changes made to the table cell automatically (v2.17.6)
         editable_autoResort    : false,         // auto resort after the content has changed.
