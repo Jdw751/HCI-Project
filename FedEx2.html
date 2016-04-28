@@ -33,6 +33,7 @@ function date_time(id)
         if(h<10)
         {
                 h = "0"+h;
+                // add in am and pm*****************
         }
         m = date.getMinutes();
         if(m<10)
@@ -44,7 +45,7 @@ function date_time(id)
         {
                 s = "0"+s;
         }
-        result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m;
+        result = ''+days[day]+' '+months[month]+' '+d+',' +year+' '+h+':'+m;
         parsedResult = ''+h+':'+m;
         document.getElementById(id).innerHTML = result;
         setTimeout('date_time("'+id+'");','1000');
@@ -706,7 +707,7 @@ Awesomplete.$('.dropdown-btn').addEventListener("click", function() {
 
       widgets: ['editable'],
       widgetOptions: {
-        editable_columns       : [0,1,2],       // or "0-2" (v2.14.2); point to the columns to make editable (zero-based index)
+        editable_columns       : [0],       // or "0-2" (v2.14.2); point to the columns to make editable (zero-based index)
         editable_enterToAccept : true,          // press enter to accept content, or click outside if false
         editable_autoAccept    : true,          // accepts any changes made to the table cell automatically (v2.17.6)
         editable_autoResort    : false,         // auto resort after the content has changed.
