@@ -30,11 +30,21 @@ function date_time(id)
         day = date.getDay();
         days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
         h = date.getHours();
+        if (h>12){
+            h = h - 12;
+            meridiem = "pm"
+                    
+                }
+        else{
+            meridiem = "am"
+        }
         if(h<10)
         {
-                h = "0"+h;
+                h = "  "+h;
+
                 // add in am and pm*****************
         }
+
         m = date.getMinutes();
         if(m<10)
         {
@@ -45,7 +55,7 @@ function date_time(id)
         {
                 s = "0"+s;
         }
-        result = ''+days[day]+' '+months[month]+' '+d+',' +year+' '+h+':'+m;
+        result = ''+days[day]+' '+months[month]+' '+d+', ' +year+'   '+h+':'+m +''+ meridiem;
         parsedResult = ''+h+':'+m;
         document.getElementById(id).innerHTML = result;
         setTimeout('date_time("'+id+'");','1000');
