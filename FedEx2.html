@@ -42,7 +42,7 @@ function date_time(id)
         {
                 h = "  "+h;
 
-                // add in am and pm*****************
+    
         }
 
         m = date.getMinutes();
@@ -148,10 +148,17 @@ Enter Task Code Number or Name:
  
             var table = document.getElementById(tableID);
  
-            var rowCount = table.rows.length;
-            var row = table.insertRow(rowCount);
+            var rowCount = table.rows.length ;
+            // var row = table.insertRow(rowCount);
+            var row = table.insertRow(1);
  
             var colCount = table.rows[0].cells.length;
+
+
+
+            
+
+
  
             for(var i=0; i<colCount; i++) {
  
@@ -164,25 +171,32 @@ Enter Task Code Number or Name:
                             newcell.innerHTML =  code;
                             break;
                     case 1:
+
                             newcell.innerHTML = task;
+                            document.getElementsByTagName("td")[i].setAttribute("contenteditable","true");
+                            
                             break;
                     case 2:
                     		newcell.innerHTML = dateID;
+                            document.getElementsByTagName("td")[i].setAttribute("contenteditable","true");
+                           
+                           
                     		
                     		break;
                     case 3:
                     		
-                    		if (rowCount == 2){// change from hardcoded
-                    			break;
-                    		}
                     		
-                    			var prevRow = rowCount-1;
+                    		var prevRow = 2;
 
                     		
 
                     		var change = table.rows[prevRow].cells;
-                    		change[3].innerHTML = dateID;
+                    		change[3].innerHTML =   dateID ;
+                            document.getElementsByTagName("td")[i].setAttribute("contenteditable","true");
                     		break;
+                    case 5:
+                            newcell.innerHTML = "<button type='button' onclick='deleteRow(this)' class='btn btn-default'> delete </button>";
+                            break;
                     
                     
                 }
@@ -199,26 +213,26 @@ Enter Task Code Number or Name:
 
 <div class="scroll">
 
-<TABLE id="dataTable" width="80%" border="1" class="editableTable">
+<TABLE id="dataTable" width="80%" border="1"  class="tablesorter">
 <TR>
         <TH>Task Code</TH>
         <TH>Task Name</TH>
         <TH>Start Time</TH>
         <TH>End Time</TH>
         <TH>Comment</TH>
-        <TH>Select to Edit</TH>
+        <TH>Actions</TH> 
         </TR>
 <tbody>
     <tr>    
             
             
+            <!-- <TD ></TD>
             <TD></TD>
+            <TD class="no-edit" id ="startTime"></TD>
+            <TD id ="endTime"></TD>
+            <TD id ="addInfo"></TD>
             <TD></TD>
-            <TD></TD>
-            <TD></TD>
-            <TD><INPUT type="text" /></TD>
-            <TD><center><button class="logButton" type="button">Edit</button></center></TD>
-            
+             -->
         </TR>
         </tbody>
     </TABLE>
@@ -243,6 +257,11 @@ Enter Task Code Number or Name:
 <!-- awesomecomplete -->
 
 <script type="text/javascript">
+
+function deleteRow(r) {//need to add feature of adjusting time
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("dataTable").deleteRow(i);
+}
     
 /**
  * Simple, lightweight, usable local autocomplete library for modern browsers
@@ -709,64 +728,7 @@ Awesomplete.$('.dropdown-btn').addEventListener("click", function() {
 <script type="text/javascript">
   // edit table
 
-  $(function() {
-
-  $("#table")
-    .tablesorter({
-      theme : 'blue',
-
-      widgets: ['editable'],
-      widgetOptions: {
-        editable_columns       : [0],       // or "0-2" (v2.14.2); point to the columns to make editable (zero-based index)
-        editable_enterToAccept : true,          // press enter to accept content, or click outside if false
-        editable_autoAccept    : true,          // accepts any changes made to the table cell automatically (v2.17.6)
-        editable_autoResort    : false,         // auto resort after the content has changed.
-        editable_validate      : null,          // return a valid string: function(text, original, columnIndex){ return text; }
-        editable_focused       : function(txt, columnIndex, $element) {
-          // $element is the div, not the td
-          // to get the td, use $element.closest('td')
-          $element.addClass('focused');
-        },
-        editable_blur          : function(txt, columnIndex, $element) {
-          // $element is the div, not the td
-          // to get the td, use $element.closest('td')
-          $element.removeClass('focused');
-        },
-        editable_selectAll     : function(txt, columnIndex, $element){
-          // note $element is the div inside of the table cell, so use $element.closest('td') to get the cell
-          // only select everthing within the element when the content starts with the letter "B"
-          return /^b/i.test(txt) && columnIndex === 0;
-        },
-        editable_wrapContent   : '<div>',       // wrap all editable cell content... makes this widget work in IE, and with autocomplete
-        editable_trimContent   : true,          // trim content ( removes outer tabs & carriage returns )
-        editable_noEdit        : 'no-edit',     // class name of cell that is not editable
-        editable_editComplete  : 'editComplete' // event fired after the table content has been edited
-      }
-    })
-    // config event variable new in v2.17.6
-    .children('tbody').on('editComplete', 'td', function(event, config){
-      var $this = $(this),
-        newContent = $this.text(),
-        cellIndex = this.cellIndex, // there shouldn't be any colspans in the tbody
-        rowIndex = $this.closest('tr').attr('id'); // data-row-index stored in row id
-
-      // Do whatever you want here to indicate
-      // that the content was updated
-      $this.addClass( 'editable_updated' ); // green background + white text
-      setTimeout(function(){
-        $this.removeClass( 'editable_updated' );
-      }, 500);
-
-      /*
-      $.post("mysite.php", {
-        "row"     : rowIndex,
-        "cell"    : cellIndex,
-        "content" : newContent
-      });
-      */
-    });
-
-});  
+ 
 
 
 
