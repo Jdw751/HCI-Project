@@ -334,7 +334,7 @@ div.scroll{
     overflow: auto;
     width: 80%;
     height: 200px;
-    
+    float: center;
 }
 .logo{
 
@@ -342,8 +342,8 @@ div.scroll{
     left:10;
     bottom: 0;
     top:0;
-    z-index: 1;
-    margin: 10px;
+    z-index: 0;
+    margin: 5px;
 
 }
 
@@ -613,3 +613,64 @@ td.editable_updated {
             background-color:rgb(255,253,210); 
         }
 
+/*slide out panel*/
+.container {
+  margin-top: 20px;
+}
+
+#slideout {
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  color: #333;
+  position: fixed;
+  /*top: 10px;*/
+  left: -520px;
+  width: 500px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+#slideout form {
+  display: block;
+  padding: 20px;
+}
+#slideout textarea {
+  display:block;
+  height: 100px;
+  margin-bottom: 6px;
+  width: 250px;
+}
+#slideout.on {
+  left: 0;
+}
+
+/*image to buttons*/
+
+.deletebutton {
+    background-image: url(trash.png); /* 16px x 16px */
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 16px;           /* make this the size of your image */
+    padding-left: 16px;     /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+
+    margin: 8px;
+}
+
+.editbutton {
+    background-image: url(edit.png); /* 16px x 16px */
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 16px;           /* make this the size of your image */
+    padding-left: 16px;     /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+
+    margin: 8px;
+}

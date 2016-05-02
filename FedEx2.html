@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" type="text/css" href="FedEx1.css"/>
 <!-- jquery insert -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 
 <div id="siteTime">
@@ -194,8 +194,19 @@ Enter Task Code Number or Name:
                     		change[3].innerHTML =   dateID ;
                             document.getElementsByTagName("td")[i].setAttribute("contenteditable","true");
                     		break;
+                    case 4:
+                            if (code == 4 || code == 6){
+                                var extraInfo = addInfo(code);
+
+                            }
+                            else{
+                                var extraInfo = '';
+                            }
+
+                            newcell.innerHTML = extraInfo;
+                            break;
                     case 5:
-                            newcell.innerHTML = "<button type='button' onclick='deleteRow(this)' class='btn btn-default'> delete </button>";
+                            newcell.innerHTML = "<button type='button' onclick='deleteRow(this)' class='deletebutton'> delete </button><button type='editbutton'  class='editbutton'> edit </button>";
                             break;
                     
                     
@@ -213,7 +224,7 @@ Enter Task Code Number or Name:
 
 <div class="scroll">
 
-<TABLE id="dataTable" width="80%" border="1"  class="tablesorter">
+<TABLE id="dataTable" width="85%" border="1"  class="tablesorter">
 <TR>
         <TH>Task Code</TH>
         <TH>Task Name</TH>
@@ -226,13 +237,7 @@ Enter Task Code Number or Name:
     <tr>    
             
             
-            <!-- <TD ></TD>
-            <TD></TD>
-            <TD class="no-edit" id ="startTime"></TD>
-            <TD id ="endTime"></TD>
-            <TD id ="addInfo"></TD>
-            <TD></TD>
-             -->
+    
         </TR>
         </tbody>
     </TABLE>
@@ -251,16 +256,41 @@ Enter Task Code Number or Name:
 
 <!-- slide in panel -->
 
+<script >
+// slide panel
+$(document).ready(function(){
+    $('editbutton').click(function(){
+        $('#slideout').toggleClass('on');
+    });
 
-<!-- autocomplete -->
+});
+// slide panel
+</script>
 
-<!-- awesomecomplete -->
 
+
+
+
+
+<!-- slide panel -->
 <script type="text/javascript">
+
+
 
 function deleteRow(r) {//need to add feature of adjusting time
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById("dataTable").deleteRow(i);
+}
+
+function editRow(r){
+
+
+
+}
+
+function addInfo(){
+
+    return true;
 }
     
 /**
@@ -285,8 +315,8 @@ var _ = function (input, o) {
 
     configure(this, {
         minChars: 1,
-        maxItems: 10,
-        autoFirst: false,
+        maxItems: 20,
+        autoFirst: true,
         data: _.DATA,
         filter: _.FILTER_CONTAINS,
         sort: _.SORT_BYLENGTH,
