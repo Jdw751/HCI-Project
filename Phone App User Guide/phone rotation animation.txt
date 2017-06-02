@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style> 
+div {
+   
+    position :relative;
+    -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+    animation: mymove 1s infinite;
+}
+
+
+
+/* Standard syntax */
+@keyframes mymove {
+    0%   {transform: rotate(0deg);}
+    20%  {transform: rotate(23deg);}
+    45%  {transform: rotate(45deg);}
+    70%  {transform: rotate(67deg);}
+    90% {transform: rotate(90deg);}
+    100% {transform: rotate(90deg);}
+}
+</style>
+</head>
+<body>
+
+<p><strong>Note:</strong> The @keyframes rule is not supported in Internet Explorer 9 and earlier versions.class="fa fa-mobile" aria-hidden="true"</p>
+
+<div class="fa fa-mobile" aria-hidden="true"></div>
+
+</body>
+</html>
+
+
+
+//////
+
+function orientationChecker(){
+				  console.log("hello");
+				  $(document).on("pagecreate",function(event){
+					  console.log("here"  + window.matchMedia("(orientation: portrait)").matches);
+					  if(event.orientation == "portrait" || window.matchMedia("(orientation: portrait)").matches)
+					    {
+					      $("p").text("The orientation has changed to portrait!").css({"background-color":"yellow","font-size":"100%"});
+					      console.log(event.orientation);
+					    }
+					  if(event.orientation == "landscape" || window.matchMedia("(orientation: landscape)").matches)
+					    {
+					      $("p").text("The orientation has changed to landscape!").css({"background-color":"pink","font-size":"100%"});
+					      console.log(event.orientation);
+					    }
+					  $(window).on("orientationchange",function(event){
+						  
+						  console.log(window.matchMedia("(orientation: portrait)"));
+					    if(event.orientation == "portrait" || window.matchMedia("(orientation: portrait)").matches)
+					    {
+					      $("p").text("The orientation has changed to portrait!").css({"background-color":"yellow","font-size":"100%"});
+					      console.log(event.orientation);
+					    }
+					    else
+					    {
+					      $("p").text("The orientation has changed to landscape!").css({"background-color":"pink","font-size":"100%"});
+					      console.log(event.orientation);
+					    }
+					  });                  
+					});
+			  	}
